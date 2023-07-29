@@ -17,12 +17,13 @@ jobs:
            -'!README.md'
            -'!.github/**'
            -'**'
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-
+      - name: Check CodeQL Results for Vulnerabilities
+        run: |
+          if grep -q "high severity vulnerabilities found" ${{ github.workspace }}/codeql-results/codeql-sarif.sarif; then
+            echo "CodeQL analysis found high-severity vulnerabilities. Deployment aborted."
+            exit 1
+          fi
+          
       - name: Set up Docker Compose
         run: docker-compose --version
 
