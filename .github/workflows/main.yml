@@ -22,7 +22,6 @@ jobs:
       - name: Wait for Web App to Start
         run: |
           # Wait for the web app to be ready
-          docker-compose up -d
           while ! curl -s http://localhost:8080; do
             sleep 5
           done

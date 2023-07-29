@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Use the nginx:1.21 image as the base for the final production image
-FROM nginx:1.21
+FROM nginx:latest
 
 # Copy the built files from the previous stage to the NGINX web root directory
 COPY --from=build-stage /app/dist /usr/share/nginx/html
