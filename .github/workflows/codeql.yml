@@ -1,0 +1,29 @@
+name: CodeQL Analysis
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+
+      - name: Build and Compile
+        run: |
+          npm install
+          npm run build
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+      - name: Save CodeQL Results
+        run: mv codeql/results ${{ github.workspace }}/codeql-results
