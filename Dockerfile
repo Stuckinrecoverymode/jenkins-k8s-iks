@@ -22,8 +22,10 @@ FROM nginx:latest
 # Copy the built files from the previous stage to the NGINX web root directory
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Expose port for the NGINX server
 EXPOSE 8080
 
 # Start NGINX when the container starts
-CMD ["nginx", "-g", "daemon off;", "-c", "/etc/nginx/nginx.conf"]
+CMD ["nginx", "-g", "daemon off;", "-c", "/etc/nginx/conf.d/default.conf"]
