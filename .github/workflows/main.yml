@@ -19,6 +19,15 @@ jobs:
       - name: Start Services with Docker Compose
         run: docker-compose up -d
 
+      - name: Wait for Web App to Start
+        run: |
+          # Wait for the web app to be ready
+          while ! curl -s http://localhost:8080; do
+            sleep 5
+          done
+
+      - name: Test Web App
+        run: curl -s http://localhost:8080
       # Add any additional steps for testing or validation as needed
 
       - name: Clean Up
