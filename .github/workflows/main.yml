@@ -8,6 +8,7 @@ on:
 jobs:
   run-docker-compose:
     runs-on: ubuntu-latest
+    needs: codeql-analysis
 
     steps:
       - name: Checkout Repository
