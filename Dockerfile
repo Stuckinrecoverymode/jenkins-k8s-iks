@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:current-alpine3.18 as build-stage
+FROM node:lts as build-stage
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install -g npm@9.8.1 && npm install
+RUN npm install
 
 # Copy the rest of the app's source code to the container
 COPY . .
