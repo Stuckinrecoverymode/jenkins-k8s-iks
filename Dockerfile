@@ -17,15 +17,13 @@ COPY . .
 RUN npm run build
 
 # Use the nginx:1.21 image as the base for the final production image
-FROM nginx:latest
+FROM nginx:stable-alpine as prod    
 
 # Copy the built files from the previous stage to the NGINX web root directory
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Expose port for the NGINX server
-EXPOSE 8080
+EXPOSE 80
 
 # Start NGINX when the container starts
-CMD ["nginx", "-g", "daemon off;", "-c", "/etc/nginx/conf.d/default.conf"]
+CMD ["nginx", "-g", "daemon off;"]
