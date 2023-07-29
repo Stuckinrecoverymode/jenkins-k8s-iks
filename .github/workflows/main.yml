@@ -1,0 +1,28 @@
+name: Run Docker Compose
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run-docker-compose:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-docker@v1
+
+      - name: Set up Docker Compose
+        run: docker-compose --version
+
+      - name: Start Services with Docker Compose
+        run: docker-compose up -d
+
+      # Add any additional steps for testing or validation as needed
+
+      - name: Clean Up
+        run: docker-compose down
