@@ -58,7 +58,7 @@ jobs:
             -'!README.md'
             -'!.github/**'
             -'**'
-          
+           
       - name: Set up Docker Compose
         run: docker-compose --version
 
