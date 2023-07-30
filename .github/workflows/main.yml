@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - master
-
+    paths-ignore:
+      - '**/README.md'
+      - '.github/**'
+    
 jobs:
   codeql-analysis:
     name: CodeQL Analysis
@@ -21,12 +24,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        # with:
-        #   path:
-        #     -'!README.md'
-        #     -'!.github/**'
-        #     -'**'
-
+  
     # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
@@ -53,12 +51,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-        # with:
-        #   path:
-        #     -'!README.md'
-        #     -'!.github/**'
-        #     -'**'
-           
+        
       - name: Set up Docker Compose
         run: docker-compose --version
 
