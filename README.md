@@ -1,3 +1,4 @@
+[![CI workflow](https://github.com/FreeGuys-Corp/jenkins-test/actions/workflows/main.yml/badge.svg)](https://github.com/FreeGuys-Corp/jenkins-test/actions/workflows/main.yml)
 # Vue.js App Deployment with GitHub Actions and IBM Kubernetes Service (IKS)
 
 This repository contains a Vue.js web application that will be deployed to IBM Kubernetes Service (IKS) using GitHub Actions for Continuous Integration and Continuous Deployment (CI/CD). The deployment will be triggered automatically whenever code changes are pushed to the main branch or when new branches are created.
