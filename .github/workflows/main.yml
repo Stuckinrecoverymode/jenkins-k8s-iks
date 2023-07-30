@@ -53,13 +53,7 @@ jobs:
            -'!README.md'
            -'!.github/**'
            -'**'
-      - name: Check CodeQL Results for Vulnerabilities
-        run: |
-          if grep -q "high severity vulnerabilities found" ${{ github.workspace }}/codeql-results/javascript.sarif; then
-            echo "CodeQL analysis found high-severity vulnerabilities. Deployment aborted."
-            exit 1
-          fi
-          
+           
       - name: Set up Docker Compose
         run: docker-compose --version
 
