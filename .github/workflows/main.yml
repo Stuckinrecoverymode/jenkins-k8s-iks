@@ -51,13 +51,13 @@ jobs:
     needs: codeql-analysis
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          path:
-            -'!README.md'
-            -'!.github/**'
-            -'**'
+      # - name: Checkout Repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     path:
+      #       -'!README.md'
+      #       -'!.github/**'
+      #       -'**'
            
       - name: Set up Docker Compose
         run: docker-compose --version
