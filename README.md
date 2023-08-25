@@ -22,7 +22,7 @@ This repository contains a Vue.js web application that will be deployed to IBM K
 
 1. Clone the repository to your local machine:
 ```bash
-git clone https://github.com/stuckinrecoverymode/jenkins-test.git
+git clone https://github.com/stuckinrecoverymode/jenkins-actions-k8s.git
 cd jenkins-test
 ```
 
